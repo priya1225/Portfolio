@@ -117,7 +117,7 @@ const HomePage = () => {
               Let's Connect
             </button>
             <a
-              href="/Priyadarshini V_Resume.pdf"
+              href="Priyadarshini V_Resume.pdf"
               download="Priyadarshini_V_Resume.pdf"
               style={{
                 background: "#232b3e",
