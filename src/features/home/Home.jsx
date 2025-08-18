@@ -20,13 +20,13 @@ const Home = () => {
 
   return (
     <>
-      <Helmet>
+      {/* <Helmet>
         <title>Priyadarshini V Portfolio</title>
         <meta
           name="description"
           content="Welcome to Priyadarshini V's Portfolio. Explore my work, skills, and experiences in web development and design."
         />
-      </Helmet>
+      </Helmet> */}
       <div
         style={{
           display: "flex",
