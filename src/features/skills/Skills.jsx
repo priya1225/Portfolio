@@ -11,6 +11,8 @@ import {
   IconBrandTailwind,
   IconStack2,
   IconBrandPhp,
+  IconBrandAbstract,
+  IconBrandFlutter,
 } from "@tabler/icons-react";
 import { Skill } from "../../assets";
 import { useMediaQuery } from "@mantine/hooks";
@@ -76,6 +78,19 @@ const skills = [
     level: 75,
     color: "#e76f00",
   },
+  {
+    icon: IconBrandAbstract,
+    name: "Java",
+    level: 75,
+    color: "#f00",
+  },
+  {
+    icon: IconBrandFlutter,
+    name: "Flutter",
+    level: 75,
+    color: "#02569b",
+  },
+
 ];
 
 const Skills = () => {

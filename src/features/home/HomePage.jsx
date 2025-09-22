@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Profile } from "../../assets";
 import About from "../about/About";
 import Service from "../service/Service";
@@ -10,6 +10,11 @@ import { useMediaQuery } from "@mantine/hooks";
 
 const HomePage = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
+    const contactRef = useRef(null);
+
+  const handleConnectClick = () => {
+    contactRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <>
@@ -113,6 +118,7 @@ const HomePage = () => {
                 width: isMobile ? "100%" : "fit-content",
                 boxShadow: "0 2px 8px rgba(207,159,255,0.15)",
               }}
+                  onClick={handleConnectClick}
             >
               Let's Connect
             </button>
@@ -168,7 +174,9 @@ const HomePage = () => {
       <Skills />
       <Experience />
       <Project />
-      <Contact />
+      <div ref={contactRef}>
+        <Contact />
+      </div>
     </>
   );
 };

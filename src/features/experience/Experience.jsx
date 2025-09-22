@@ -6,7 +6,7 @@ const experiences = [
     type: "Company",
     name: "Annz Technology",
     year: "August 2024 - Present",
-    score: "Junior Software Developer",
+    score: "Software Engineer",
     location: "Chennai",
   },
   {

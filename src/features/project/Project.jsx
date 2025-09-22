@@ -60,6 +60,18 @@ const projects = [
       "Developed a comprehensive ambulance service management system. Implemented real-time tracking, automated dispatching, and a user-friendly interface for both patients and healthcare providers.",
     features: ["Admin Portal", "Web Portal"],
   },
+  {
+    name: "AI Security Application",
+    description:
+      "Developed an AI-powered security application for real-time threat detection and response. Integrated machine learning algorithms for anomaly detection and automated incident response workflows.",
+    features: ["Website"],
+  },
+  {
+    name: "AI Chatbot",
+    description:
+      "Developed an AI-powered chatbot for customer support and engagement. Integrated natural language processing for understanding user queries and providing relevant responses.",
+    features: ["Website"],
+  },
 ];
 
 const Project = () => {
@@ -108,7 +120,7 @@ const Project = () => {
         {projects?.map((project, idx) => (
           <Paper
             key={idx}
-            shadow="sm"
+            withBorder
             radius="lg"
             p={isMobile ? "md" : "lg"}
             style={{
