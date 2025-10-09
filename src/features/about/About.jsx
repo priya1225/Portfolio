@@ -1,6 +1,7 @@
 import React from "react";
 import { Abouts, Banner } from "../../assets";
 import { useMediaQuery } from "@mantine/hooks";
+import { Divider, Title } from "@mantine/core";
 
 const About = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -8,7 +9,7 @@ const About = () => {
   return (
     <div
       style={{
-        maxWidth: 1700,
+        maxWidth: 1460,
         margin: isMobile ? "20px auto" : "40px auto",
         padding: isMobile ? "6px" : "12px",
         width: "100%",
@@ -145,7 +146,7 @@ const About = () => {
           padding: isMobile ? "1px 0" : "1px 0",
         }}
       >
-        <h2
+        {/* <h2
           style={{
             color: "#800080",
             fontWeight: 700,
@@ -155,7 +156,31 @@ const About = () => {
           }}
         >
           Why Choose Me?
-        </h2>
+        </h2> */}
+ <Title
+        align="center"
+        order={2}
+        style={{ fontWeight: 700, marginTop: isMobile ? 24 : 40 }}
+      >
+        <Divider
+          size="sm"
+          style={{
+            width: isMobile ? 180 : 400,
+            margin: "0 auto 20px auto",
+            borderTop: "3px solid  #800080",
+          }}
+        />
+           WHY CHOOSE ME ?
+        <Divider
+          size="sm"
+          style={{
+            width: isMobile ? 180 : 400,
+            margin: "20px auto 0 auto",
+            borderTop: "3px solid  #800080",
+            marginBottom: isMobile ? 20 : 40,
+          }}
+        />
+      </Title>
         <ul
           style={{
             color: "#232b3e",
@@ -164,7 +189,7 @@ const About = () => {
             lineHeight: 1.7,
             display: "flex",
             flexDirection: isMobile ? "column" : "row",
-            gap: isMobile ? "18px" : "90px",
+            gap: isMobile ? "18px" : "30px",
             listStyle: "none",
             justifyContent: isMobile ? "center" : "flex-start",
             alignItems: isMobile ? "center" : "flex-start",

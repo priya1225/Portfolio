@@ -49,7 +49,14 @@ const experiences = [
 
 const Experience = () => {
   return (
-    <>
+    <div
+      style={{
+        maxWidth: 1440,
+        margin: "0 auto",
+        paddingLeft: 8,
+        paddingRight: 8,
+      }}
+    >
       <Title
         align="center"
         order={2}
@@ -164,7 +171,7 @@ const Experience = () => {
                           style={{ justifyContent: "center" }}
                         >
                           <Text
-                            fw={500}
+                            fw={700}
                             align="center"
                             style={{ fontSize: "1.3rem", color: "#800080" }}
                           >
@@ -297,7 +304,7 @@ const Experience = () => {
                           style={{ justifyContent: "center" }}
                         >
                           <Text
-                            fw={500}
+                            fw={700}
                             align="center"
                             style={{ fontSize: "1.3rem", color: "#800080" }}
                           >
@@ -388,9 +395,22 @@ const Experience = () => {
             font-size: 1rem !important;
           }
         }
+
+        @keyframes shake {
+          0% { transform: translateX(0); }
+          20% { transform: translateX(-8px); }
+          40% { transform: translateX(8px); }
+          60% { transform: translateX(-8px); }
+          80% { transform: translateX(8px); }
+          100% { transform: translateX(0); }
+        }
+
+        .timeline-card:hover {
+          animation: shake 0.5s;
+        }
         `}
       </style>
-    </>
+    </div>
   );
 };
 

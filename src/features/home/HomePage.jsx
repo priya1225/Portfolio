@@ -10,7 +10,7 @@ import { useMediaQuery } from "@mantine/hooks";
 
 const HomePage = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
-    const contactRef = useRef(null);
+  const contactRef = useRef(null);
 
   const handleConnectClick = () => {
     contactRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -18,12 +18,39 @@ const HomePage = () => {
 
   return (
     <>
+      {/* Animation styles */}
+      <style>
+        {`
+          .slide-in {
+            opacity: 0;
+            transform: translateX(-40px);
+            animation: slideIn 1s 0.5s infinite alternate;
+          }
+          @keyframes slideIn {
+            to {
+              opacity: 1;
+              transform: translateX(0);
+            }
+          }
+          .card-animate {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: cardFadeUp 1s 1s forwards;
+          }
+          @keyframes cardFadeUp {
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        `}
+      </style>
       <div
+        className="card-animate"
         style={{
           display: "flex",
           flexDirection: isMobile ? "column-reverse" : "row",
           width: "100%",
-          maxWidth: isMobile ? "100%" : "1700px",
           height: isMobile ? "auto" : "70vh",
           alignItems: "center",
           justifyContent: "center",
@@ -31,7 +58,6 @@ const HomePage = () => {
             ? "linear-gradient(120deg, #f8f9fa 70%, #CF9FFF 100%)"
             : "linear-gradient(120deg, #f8f9fa 50%, #CF9FFF 50%)",
           overflow: "hidden",
-          borderRadius: isMobile ? 20 : 40,
           margin: "0 auto",
           marginTop: isMobile ? 16 : 40,
           paddingLeft: isMobile ? 8 : 16,
@@ -53,7 +79,7 @@ const HomePage = () => {
         >
           <h2
             style={{
-              color: "#CF9FFF",
+              color: "#800080",
               fontWeight: 700,
               fontSize: isMobile ? "1.3rem" : "2rem",
               marginBottom: 1,
@@ -72,14 +98,15 @@ const HomePage = () => {
             Priyadarshini V
           </h1>
           <h3
+            className="slide-in"
             style={{
-              color: "#232b3e",
+              color: "#800080",
               fontWeight: 500,
               fontSize: isMobile ? "1rem" : "1.3rem",
               marginBottom: 16,
             }}
           >
-            Junior Software Developer
+            Software Engineer
           </h3>
           <p
             style={{
@@ -107,7 +134,7 @@ const HomePage = () => {
           >
             <button
               style={{
-                background: "#CF9FFF",
+                background: "#800080",
                 color: "#fff",
                 border: "none",
                 borderRadius: 8,
@@ -118,7 +145,7 @@ const HomePage = () => {
                 width: isMobile ? "100%" : "fit-content",
                 boxShadow: "0 2px 8px rgba(207,159,255,0.15)",
               }}
-                  onClick={handleConnectClick}
+              onClick={handleConnectClick}
             >
               Let's Connect
             </button>
@@ -141,7 +168,7 @@ const HomePage = () => {
                 textAlign: "center",
               }}
             >
-              Download Resume
+              Explore Who I Am...
             </a>
           </div>
         </div>
@@ -158,8 +185,8 @@ const HomePage = () => {
             src={Profile}
             alt="Profile"
             style={{
-              width: isMobile ? 180 : 350,
-              height: isMobile ? 180 : 350,
+              width: isMobile ? 180 : 450,
+              height: isMobile ? 180 : 450,
               objectFit: "cover",
               borderRadius: "50%",
               boxShadow: "0 4px 24px rgba(207,159,255,0.18)",

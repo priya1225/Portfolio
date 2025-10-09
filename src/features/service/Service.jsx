@@ -75,6 +75,8 @@ const Service = () => {
       size="lg"
       my={isMobile ? 24 : 50}
       style={{
+        maxWidth: 1460, // Set maxWidth here
+        margin: "0 auto",
         paddingLeft: isMobile ? 8 : isTablet ? 20 : 40,
         paddingRight: isMobile ? 8 : isTablet ? 20 : 40,
       }}
@@ -136,12 +138,19 @@ const Service = () => {
                   justifyContent: "center",
                 }}
               >
-                {React.createElement(service.icon, {
-                  size: isMobile ? 22 : 30,
-                  color: "white",
-                })}
+                <span
+                  style={{
+                    display: "inline-block",
+                    animation: "icon-bounce 1.5s infinite alternate",
+                  }}
+                >
+                  {React.createElement(service.icon, {
+                    size: isMobile ? 22 : 30,
+                    color: "white",
+                  })}
+                </span>
               </ThemeIcon>
-              <Text weight={600} size={isMobile ? "md" : "lg"} mb="sm">
+              <Text fw={700} size={isMobile ? "md" : "lg"} mb="sm">
                 {service.title}
               </Text>
               <Text size={isMobile ? "xs" : "sm"} color="dimmed">
@@ -151,6 +160,15 @@ const Service = () => {
           </Grid.Col>
         ))}
       </Grid>
+      <style>
+        {`
+          @keyframes icon-bounce {
+            0% { transform: scale(1) rotate(0deg);}
+            50% { transform: scale(1.15) rotate(-10deg);}
+            100% { transform: scale(1) rotate(0deg);}
+          }
+        `}
+      </style>
     </Box>
   );
 };

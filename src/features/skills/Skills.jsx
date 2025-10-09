@@ -90,8 +90,24 @@ const skills = [
     level: 75,
     color: "#02569b",
   },
-
 ];
+
+const cardAnimationStyle = `
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .fade-up {
+    opacity: 0;
+    animation: fadeUp 0.7s forwards;
+  }
+`;
 
 const Skills = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -102,8 +118,9 @@ const Skills = () => {
       style={{
         paddingLeft: isMobile ? 8 : 40,
         paddingRight: isMobile ? 8 : 40,
-        width: "100%",
-        maxWidth: "100vw",
+        maxWidth: "1450px",
+        margin: "0 auto",
+        marginBottom: isMobile ? 40 : 80,
       }}
     >
       <Title align="center" order={2} style={{ fontWeight: 700 }}>
@@ -154,6 +171,7 @@ const Skills = () => {
               radius="md"
               withBorder
               p="lg"
+              className="fade-up"
               style={{
                 width: isMobile ? 160 : 260,
                 height: 80,
@@ -164,6 +182,8 @@ const Skills = () => {
                 gap: 18,
                 margin: "0 auto",
                 marginBottom: isMobile ? 12 : 24,
+                background: hexToRgba(skill.color, 0.1),
+                animationDelay: `${idx * 0.12 + 0.2}s`, // Stagger effect
               }}
             >
               <ThemeIcon
@@ -183,7 +203,7 @@ const Skills = () => {
                   color: "#fff",
                 })}
               </ThemeIcon>
-              <Text weight={600} size={isMobile ? "sm" : "md"} align="left">
+              <Text fw={700} size={isMobile ? "sm" : "md"} align="left">
                 {skill.name}
               </Text>
             </Card>
@@ -203,10 +223,10 @@ const Skills = () => {
             src={Skill}
             alt="Skills"
             style={{
-              width: isMobile ? "100%" : 640,
+              width: isMobile ? "100%" : 680,
               height: "100%",
-              objectFit: "contain",
               borderRadius: 24,
+              marginTop: isMobile ? 20 : 80,
               display: isMobile ? "none" : "block",
             }}
           />
@@ -215,5 +235,18 @@ const Skills = () => {
     </Box>
   );
 };
+
+function hexToRgba(hex, alpha) {
+  let c = hex.replace("#", "");
+  if (c.length === 3)
+    c = c
+      .split("")
+      .map((x) => x + x)
+      .join("");
+  const num = parseInt(c, 16);
+  return `rgba(${(num >> 16) & 255}, ${(num >> 8) & 255}, ${
+    num & 255
+  }, ${alpha})`;
+}
 
 export default Skills;

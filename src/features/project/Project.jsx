@@ -29,12 +29,7 @@ const projects = [
     name: "Survey Project",
     description:
       "Built dynamic interfaces for Super Admin, Employee, and Survey portals used in internal management systems.Implemented authentication, data visualization, and user management modules.Implemented authentication, data visualization, and user management modules.Created a dynamic survey portal where admins can design surveys and employees can respond securely with real-time results visualization.",
-    features: [
-      "Survey Portal",
-      "Web Portal",
-      "Admin Portal",
-      "Employee Portal",
-    ],
+    features: ["Survey Portal", "Website", "Admin Portal", "Employee Portal"],
   },
   {
     name: "Project Management",
@@ -46,7 +41,7 @@ const projects = [
     name: "Employee Reward Project",
     description:
       "Developed a role-based admin dashboard for managing employee rewards and recognition. Integrated secure login, rewards approval workflows, and employee performance metrics. Created a responsive employee-facing portal to view rewards, nominate peers, and track achievements.",
-    features: ["Admin Portal", "Web Portal"],
+    features: ["Admin Portal", "Website"],
   },
   {
     name: "Ecard Project",
@@ -105,79 +100,96 @@ const Project = () => {
         />
       </Title>
 
-      <SimpleGrid
-        cols={isMobile ? 1 : isTablet ? 2 : 3}
-        spacing={isMobile ? "md" : "xl"}
+      <div
         style={{
-          maxWidth: "100vw",
-          marginTop: isMobile ? 12 : 24,
-          marginLeft: isMobile ? 0 : "60px",
-          marginRight: isMobile ? 0 : "-30px",
-          paddingLeft: isMobile ? 8 : 0,
-          paddingRight: isMobile ? 8 : 0,
+          maxWidth: 1440,
+          margin: "0 auto",
+          width: "100%",
         }}
       >
-        {projects?.map((project, idx) => (
-          <Paper
-            key={idx}
-            withBorder
-            radius="lg"
-            p={isMobile ? "md" : "lg"}
-            style={{
-              width: isMobile ? "100%" : 500,
-              minHeight: isMobile ? 220 : 300,
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <Group>
-              <IconShieldDown size={isMobile ? 24 : 32} color="#800080" />
-              <Text fw={700} size={isMobile ? "md" : "lg"}>
-                {project.name}
-              </Text>
-            </Group>
+        <SimpleGrid
+          cols={isMobile ? 1 : isTablet ? 2 : 3}
+          spacing={isMobile ? "md" : "xl"}
+          style={{
+            marginTop: isMobile ? 12 : 24,
+            paddingLeft: isMobile ? 8 : 0,
+            paddingRight: isMobile ? 8 : 0,
+          }}
+        >
+          {projects?.map((project, idx) => (
+            <Paper
+              key={idx}
+              className="project-card"
+              withBorder
+              radius="lg"
+              p={isMobile ? "md" : "lg"}
+              style={{
+                minHeight: isMobile ? 220 : 300,
+                display: "flex",
+                flexDirection: "column",
+                height: "100%",
+                transition: "transform 0.2s, box-shadow 0.2s",
+                cursor: "pointer",
+              }}
+            >
+              <Group>
+                <IconShieldDown size={isMobile ? 24 : 32} color="#800080" />
+                <Text fw={700} size={isMobile ? "md" : "lg"}>
+                  {project.name}
+                </Text>
+              </Group>
 
-            <Tooltip
-              label={project.description}
-              position="bottom"
-              color="gray"
-              withArrow
-              multiline
-              w={isMobile ? 220 : 350}
-            >
-              <Text
-                mt="sm"
-                mb="md"
-                color="dimmed"
-                style={{
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                  whiteSpace: "nowrap",
-                  cursor: "pointer",
-                  fontSize: isMobile ? 13 : 16,
-                  maxWidth: "100%",
-                }}
+              <Tooltip
+                label={project.description}
+                position="bottom"
+                color="gray"
+                withArrow
+                multiline
+                w={isMobile ? 220 : 350}
               >
-                {project.description}
-              </Text>
-            </Tooltip>
-            <List
-              spacing="md"
-              size={isMobile ? "sm" : "md"}
-              icon={
-                <IconArrowNarrowRight
-                  size={isMobile ? 18 : 24}
-                  color="#800080"
-                />
-              }
-            >
-              {project?.features?.map((feature, i) => (
-                <List.Item key={i}>{feature}</List.Item>
-              ))}
-            </List>
-          </Paper>
-        ))}
-      </SimpleGrid>
+                <Text
+                  mt="sm"
+                  mb="md"
+                  color="dimmed"
+                  style={{
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                    cursor: "pointer",
+                    fontSize: isMobile ? 13 : 16,
+                    maxWidth: "100%",
+                  }}
+                >
+                  {project.description}
+                </Text>
+              </Tooltip>
+              <List
+                spacing="md"
+                size={isMobile ? "sm" : "md"}
+                icon={
+                  <IconArrowNarrowRight
+                    size={isMobile ? 18 : 24}
+                    color="#800080"
+                  />
+                }
+              >
+                {project?.features?.map((feature, i) => (
+                  <List.Item key={i}>{feature}</List.Item>
+                ))}
+              </List>
+            </Paper>
+          ))}
+        </SimpleGrid>
+        <style>
+          {`
+            .project-card:hover,
+            .project-card:active {
+              transform: translateY(-8px) scale(1.03);
+              box-shadow: 0 8px 24px rgba(128,0,128,0.12);
+            }
+          `}
+        </style>
+      </div>
     </>
   );
 };
