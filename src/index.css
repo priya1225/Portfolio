@@ -1,0 +1,15 @@
+/* Remove browser default focus ring on mouse click */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid #800080;
+  outline-offset: 3px;
+}

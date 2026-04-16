@@ -1,21 +1,25 @@
 import "./App.css";
-import '@mantine/core/styles.css';
+import "@mantine/core/styles.css";
 import Home from "./features/home/Home";
 import HomePage from "./features/home/HomePage";
 import About from "./features/about/About";
 import Service from "./features/service/Service";
 import { MantineProvider } from "@mantine/core";
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Routes, Route, Outlet, useLocation } from "react-router-dom";
 import Skills from "./features/skills/Skills";
 import Contact from "./features/contact/Contact";
 import Experience from "./features/experience/Experience";
 import Project from "./features/project/Project";
 
 function Layout() {
+  const location = useLocation();
+  const isHome =
+    location.pathname === "/" || location.pathname === "/home";
+
   return (
     <>
       <Home />
-      <div style={{ marginTop: 16 }}>
+      <div style={{ paddingTop: isHome ? 0 : 88 }}>
         <Outlet />
       </div>
     </>
