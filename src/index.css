@@ -13,3 +13,58 @@
   outline: 2px solid #800080;
   outline-offset: 3px;
 }
+
+:root {
+  --pv-bg:         #f8f9fa;
+  --pv-surface:    #ffffff;
+  --pv-nav-bg:     #ffffff;
+  --pv-text:       #232b3e;
+  --pv-text-muted: #555555;
+  --pv-text-soft:  #6c757d;
+  --pv-border:     rgba(0,0,0,0.07);
+  --pv-shadow:     rgba(0,0,0,0.09);
+  --pv-card-accent: rgba(0,0,0,0.03);
+  --pv-accent-soft: #CF9FFF;
+  --pv-fade:       #f8f9fa;
+}
+
+[data-theme="dark"] {
+  --pv-bg:         #0b0d11;
+  --pv-surface:    #15181f;
+  --pv-nav-bg:     #15181f;
+  --pv-text:       #e8eaf0;
+  --pv-text-muted: #9aa3b8;
+  --pv-text-soft:  #7a859a;
+  --pv-border:     rgba(255,255,255,0.08);
+  --pv-shadow:     rgba(0,0,0,0.6);
+  --pv-card-accent: rgba(255,255,255,0.03);
+  --pv-accent-soft: #4a3a6a;
+  --pv-fade:       #0b0d11;
+}
+
+body {
+  background-color: var(--pv-bg);
+  color: var(--pv-text);
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+/* ── Dark-mode card overrides ────────────────────────── */
+[data-theme="dark"] .proj-card {
+  border-color: rgba(255,255,255,0.08) !important;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.4) !important;
+}
+
+[data-theme="dark"] .why-marquee-card {
+  border-color: rgba(255,255,255,0.08) !important;
+  box-shadow: 0 3px 14px rgba(0,0,0,0.35) !important;
+}
+
+[data-theme="dark"] .mantine-Card-root {
+  background: var(--pv-surface) !important;
+  border-color: rgba(255,255,255,0.08) !important;
+}
+
+[data-theme="dark"] .mantine-Text-root,
+[data-theme="dark"] .mantine-Title-root {
+  color: var(--pv-text) !important;
+}

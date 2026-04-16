@@ -35,7 +35,7 @@ const Footer = () => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <footer style={{ background: "#fff", borderTop: "1px solid #f0e8ff" }}>
+    <footer style={{ background: "var(--pv-surface)", borderTop: "1px solid var(--pv-border)" }}>
       <style>{`
         /* CTA button */
         .ft-cta-btn {
@@ -73,7 +73,7 @@ const Footer = () => {
 
         /* Contact link */
         .ft-contact-link {
-          color: #555; text-decoration: none; font-size: 0.87rem;
+          color: var(--pv-text-muted); text-decoration: none; font-size: 0.87rem;
           transition: color 0.2s;
         }
         .ft-contact-link:hover { color: #800080; }
@@ -81,11 +81,11 @@ const Footer = () => {
         /* Social */
         .ft-social {
           width: 42px; height: 42px; border-radius: 50%;
-          border: 1.5px solid #ede9fe;
+          border: 1.5px solid var(--pv-border);
           display: flex; align-items: center; justify-content: center;
           color: #800080; text-decoration: none;
           transition: background 0.22s, border-color 0.22s, transform 0.22s, box-shadow 0.22s;
-          background: #faf5ff;
+          background: var(--pv-bg);
         }
         .ft-social:hover {
           background: #800080; border-color: #800080;
@@ -110,8 +110,8 @@ const Footer = () => {
 
       {/* ── CTA Banner ── */}
       <div style={{
-        background: "linear-gradient(120deg, #f8f0ff 0%, #fce4ff 50%, #f0e8ff 100%)",
-        borderBottom: "1px solid #ede9fe",
+        background: "var(--pv-bg)",
+        borderBottom: "1px solid var(--pv-border)",
         padding: isMobile ? "40px 20px" : "56px 60px",
         textAlign: "center",
         position: "relative",
@@ -151,7 +151,7 @@ const Footer = () => {
           margin: "0 0 12px",
           fontSize: isMobile ? "1.7rem" : "2.4rem",
           fontWeight: 900,
-          color: "#1a1a2e",
+          color: "var(--pv-text)",
           lineHeight: 1.2,
         }}>
           Have a project in mind?{" "}
@@ -165,7 +165,7 @@ const Footer = () => {
         </h2>
 
         <p style={{
-          color: "#6c757d", fontSize: isMobile ? "0.9rem" : "1rem",
+          color: "var(--pv-text-soft)", fontSize: isMobile ? "0.9rem" : "1rem",
           margin: "0 auto 28px", maxWidth: 480, lineHeight: 1.7,
         }}>
           I'm open to freelance projects, full-time roles, and exciting collaborations.
@@ -181,14 +181,14 @@ const Footer = () => {
             download="Priyadarshini V-Resume.pdf"
             style={{
               display: "inline-flex", alignItems: "center", gap: 8,
-              background: "#fff", color: "#800080",
+              background: "var(--pv-surface)", color: "#800080",
               border: "2px solid #800080", borderRadius: 999,
               padding: "12px 32px", fontSize: "1rem", fontWeight: 700,
               textDecoration: "none",
               transition: "background 0.22s, color 0.22s, transform 0.22s",
             }}
             onMouseEnter={e => { e.currentTarget.style.background = "#800080"; e.currentTarget.style.color = "#fff"; e.currentTarget.style.transform = "translateY(-3px)"; }}
-            onMouseLeave={e => { e.currentTarget.style.background = "#fff"; e.currentTarget.style.color = "#800080"; e.currentTarget.style.transform = "translateY(0)"; }}
+            onMouseLeave={e => { e.currentTarget.style.background = "var(--pv-surface)"; e.currentTarget.style.color = "#800080"; e.currentTarget.style.transform = "translateY(0)"; }}
           >
             <IconCode size={18} />
             View Resume
@@ -211,9 +211,9 @@ const Footer = () => {
           {/* Brand col */}
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 14 }}>
-              <img src={Logo} alt="Logo" style={{ width: 46, height: 46, mixBlendMode: "multiply" }} />
+              <img src={Logo} alt="Logo" style={{ width: 46, height: 46, filter: "none" }} />
               <div>
-                <div style={{ color: "#1a1a2e", fontWeight: 800, fontSize: "1.05rem" }}>Priyadarshini V</div>
+                <div style={{ color: "var(--pv-text)", fontWeight: 800, fontSize: "1.05rem" }}>Priyadarshini V</div>
                 <div style={{ color: "#800080", fontSize: "0.7rem", fontWeight: 700, letterSpacing: 1.5 }}>SOFTWARE ENGINEER</div>
               </div>
             </div>
@@ -239,7 +239,7 @@ const Footer = () => {
           {/* Nav col */}
           <div>
             <h4 style={{
-              color: "#1a1a2e", fontWeight: 800, fontSize: "0.9rem",
+              color: "var(--pv-text)", fontWeight: 800, fontSize: "0.9rem",
               margin: "0 0 18px", letterSpacing: 1.5, textTransform: "uppercase",
             }}>
               Navigation
@@ -256,7 +256,7 @@ const Footer = () => {
           {/* Contact col */}
           <div>
             <h4 style={{
-              color: "#1a1a2e", fontWeight: 800, fontSize: "0.9rem",
+              color: "var(--pv-text)", fontWeight: 800, fontSize: "0.9rem",
               margin: "0 0 18px", letterSpacing: 1.5, textTransform: "uppercase",
             }}>
               Contact Info
@@ -266,7 +266,7 @@ const Footer = () => {
                 <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
                   <div style={{
                     width: 34, height: 34, minWidth: 34, borderRadius: 8,
-                    background: "#faf5ff", border: "1px solid #ede9fe",
+                    background: "var(--pv-bg)", border: "1px solid var(--pv-border)",
                     display: "flex", alignItems: "center", justifyContent: "center",
                     marginTop: 1,
                   }}>
@@ -286,7 +286,7 @@ const Footer = () => {
         </div>
 
         {/* Divider */}
-        <div style={{ borderTop: "1px solid #f0e8ff", marginBottom: 24 }} />
+        <div style={{ borderTop: "1px solid var(--pv-border)", marginBottom: 24 }} />
 
         {/* Bottom bar */}
         <div style={{

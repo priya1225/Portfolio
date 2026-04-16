@@ -10,6 +10,7 @@ import Skills from "./features/skills/Skills";
 import Contact from "./features/contact/Contact";
 import Experience from "./features/experience/Experience";
 import Project from "./features/project/Project";
+import { ThemeProvider, useTheme } from "./context/ThemeContext";
 
 function Layout() {
   const location = useLocation();
@@ -26,9 +27,10 @@ function Layout() {
   );
 }
 
-function App() {
+function ThemeApp() {
+  const { dark } = useTheme();
   return (
-    <MantineProvider>
+    <MantineProvider forceColorScheme={dark ? "dark" : "light"}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
@@ -42,6 +44,14 @@ function App() {
         </Route>
       </Routes>
     </MantineProvider>
+  );
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <ThemeApp />
+    </ThemeProvider>
   );
 }
 

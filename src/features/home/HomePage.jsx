@@ -161,7 +161,7 @@ const HomePage = () => {
         }
         .hero-btn-primary:hover {
           transform: translateY(-3px);
-          box-shadow: 0 10px 28px rgba(128,0,128,0.38) !important;
+          box-shadow: 0 10px 28px var(--pv-accent-shadow);
         }
         .hero-btn-secondary {
           transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -184,8 +184,8 @@ const HomePage = () => {
           alignItems: "center",
           justifyContent: "center",
           background: isMobile
-            ? "linear-gradient(120deg, #f8f9fa 70%, #CF9FFF 100%)"
-            : "linear-gradient(120deg, #f8f9fa 50%, #CF9FFF 50%)",
+            ? "linear-gradient(120deg, var(--pv-bg) 70%, var(--pv-accent-soft) 100%)"
+            : "linear-gradient(120deg, var(--pv-bg) 50%, var(--pv-accent-soft) 50%)",
           overflow: "hidden",
           paddingLeft: isMobile ? 8 : 16,
           paddingRight: isMobile ? 8 : 16,
@@ -198,7 +198,8 @@ const HomePage = () => {
         <div className="hero-circle-tl" style={{
           position: "absolute", top: isMobile ? -40 : -60, left: isMobile ? -40 : -60,
           width: isMobile ? 140 : 220, height: isMobile ? 140 : 220,
-          borderRadius: "50%", background: "rgba(207,159,255,0.18)",
+          borderRadius: "50%", background: "var(--pv-accent-soft)",
+          opacity: 0.1,
           boxShadow: "0 8px 40px 10px rgba(128,0,128,0.13)",
           pointerEvents: "none", zIndex: 0,
         }} />
@@ -206,14 +207,16 @@ const HomePage = () => {
           position: "absolute", bottom: isMobile ? -40 : -60, right: isMobile ? -40 : -60,
           width: isMobile ? 160 : 260, height: isMobile ? 160 : 260,
           borderRadius: "50%", background: "rgba(128,0,128,0.10)",
-          boxShadow: "0 8px 40px 10px rgba(207,159,255,0.18)",
+          boxShadow: "0 8px 40px 10px var(--pv-accent-soft)",
+          opacity: 0.15,
           pointerEvents: "none", zIndex: 0,
         }} />
         <div className="hero-circle-tr" style={{
           position: "absolute", top: isMobile ? -20 : -30, right: isMobile ? -20 : -30,
           width: isMobile ? 90 : 140, height: isMobile ? 90 : 140,
-          borderRadius: "50%", background: "rgba(255,255,255,0.22)",
-          boxShadow: "0 4px 24px 6px rgba(207,159,255,0.22)",
+          borderRadius: "50%", background: "rgba(255,255,255,0.05)",
+          boxShadow: "0 4px 24px 6px var(--pv-accent-soft)",
+          opacity: 0.1,
           pointerEvents: "none", zIndex: 0,
         }} />
         <div className="hero-circle-bl" style={{
@@ -234,13 +237,15 @@ const HomePage = () => {
         <div className="hero-dot-2" style={{
           position: "absolute", bottom: "28%", left: "35%",
           width: isMobile ? 8 : 10, height: isMobile ? 8 : 10,
-          borderRadius: "50%", background: "rgba(207,159,255,0.35)",
+          borderRadius: "50%", background: "var(--pv-accent-soft)",
+          opacity: 0.4,
           pointerEvents: "none", zIndex: 0,
         }} />
         <div className="hero-dot-3" style={{
           position: "absolute", top: "55%", right: "12%",
           width: isMobile ? 6 : 8, height: isMobile ? 6 : 8,
-          borderRadius: "50%", background: "rgba(255,255,255,0.5)",
+          borderRadius: "50%", background: "var(--pv-text-soft)",
+          opacity: 0.2,
           pointerEvents: "none", zIndex: 0,
         }} />
 
@@ -266,7 +271,7 @@ const HomePage = () => {
           </h2>
 
           <h1 className="hero-name" style={{
-            color: "#232b3e", fontWeight: 900,
+            color: "var(--pv-text)", fontWeight: 900,
             fontSize: isMobile ? "2.2rem" : "3.5rem", margin: "4px 0 8px",
           }}>
             Priyadarshini V
@@ -286,7 +291,7 @@ const HomePage = () => {
           </div>
 
           <p className="hero-desc" style={{
-            color: "#6c757d", fontSize: isMobile ? "0.98rem" : "1.1rem",
+            color: "var(--pv-text-soft)", fontSize: isMobile ? "0.98rem" : "1.1rem",
             maxWidth: isMobile ? 320 : 500, marginBottom: 32,
           }}>
             With 1.8 years of hands-on experience in web development, I
@@ -321,7 +326,7 @@ const HomePage = () => {
               href="Priyadarshini V-Resume.pdf"
               download="Priyadarshini V-Resume.pdf"
               style={{
-                background: "#232b3e", color: "#fff", border: "none",
+                background: "var(--pv-text)", color: "var(--pv-bg)", border: "none",
                 borderRadius: 8, padding: isMobile ? "10px 0" : "12px 36px",
                 fontSize: isMobile ? "1rem" : "1.1rem", fontWeight: 600,
                 cursor: "pointer", width: isMobile ? "100%" : "fit-content",
@@ -354,7 +359,7 @@ const HomePage = () => {
           <div className="orbit-dot-2" style={{
             position: "absolute",
             width: isMobile ? 7 : 10, height: isMobile ? 7 : 10,
-            borderRadius: "50%", background: "#CF9FFF",
+            borderRadius: "50%", background: "var(--pv-accent-soft)",
             boxShadow: "0 0 8px rgba(207,159,255,0.7)",
             pointerEvents: "none",
           }} />
@@ -369,8 +374,8 @@ const HomePage = () => {
                 height: isMobile ? 180 : 450,
                 objectFit: "cover",
                 borderRadius: "50%",
-                border: "5px solid #fff",
-                background: "#CF9FFF",
+                border: "5px solid var(--pv-surface)",
+                background: "var(--pv-accent-soft)",
               }}
             />
           </div>
