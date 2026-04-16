@@ -16,6 +16,7 @@ import {
 } from "@tabler/icons-react";
 import { Skill } from "../../assets";
 import { useMediaQuery } from "@mantine/hooks";
+import { useInView } from "../../hooks/useInView";
 
 const skills = [
   {
@@ -92,25 +93,9 @@ const skills = [
   },
 ];
 
-const cardAnimationStyle = `
-  @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  .fade-up {
-    opacity: 0;
-    animation: fadeUp 0.7s forwards;
-  }
-`;
-
 const Skills = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
+  const [gridRef, inView] = useInView(0.1);
 
   return (
     <Box
@@ -143,6 +128,17 @@ const Skills = () => {
           }}
         />
       </Title>
+      <style>{`
+        @keyframes fadeUp {
+          from { opacity: 0; transform: translateY(40px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .skill-card-animate {
+          opacity: 0;
+          animation: fadeUp 0.6s ease forwards;
+        }
+      `}</style>
+
       <Box
         style={{
           display: "flex",
@@ -155,6 +151,7 @@ const Skills = () => {
         }}
       >
         <Box
+          ref={gridRef}
           style={{
             display: "flex",
             flexWrap: "wrap",
@@ -171,7 +168,7 @@ const Skills = () => {
               radius="md"
               withBorder
               p="lg"
-              className="fade-up"
+              className={inView ? "skill-card-animate" : undefined}
               style={{
                 width: isMobile ? 160 : 260,
                 height: 80,
@@ -183,7 +180,8 @@ const Skills = () => {
                 margin: "0 auto",
                 marginBottom: isMobile ? 12 : 24,
                 background: hexToRgba(skill.color, 0.1),
-                animationDelay: `${idx * 0.12 + 0.2}s`, // Stagger effect
+                opacity: inView ? undefined : 0,
+                animationDelay: inView ? `${idx * 0.1}s` : undefined,
               }}
             >
               <ThemeIcon
