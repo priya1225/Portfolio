@@ -95,7 +95,9 @@ const skills = [
 
 const Skills = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
-  const [gridRef, inView] = useInView(0.1);
+  const [titleRef, titleInView] = useInView(0.1);
+  const [gridRef, gridInView] = useInView(0.05);
+  const [imgRef, imgInView] = useInView(0.1);
 
   return (
     <Box
@@ -108,36 +110,36 @@ const Skills = () => {
         marginBottom: isMobile ? 40 : 80,
       }}
     >
-      <Title align="center" order={2} style={{ fontWeight: 700 }}>
-        <Divider
-          size="sm"
-          style={{
-            width: isMobile ? 180 : 400,
-            margin: "0 auto 20px auto",
-            borderTop: "3px solid  #800080",
-          }}
-        />
-        CORE SKILLS
-        <Divider
-          size="sm"
-          style={{
-            width: isMobile ? 180 : 400,
-            margin: "20px auto 0 auto",
-            borderTop: "3px solid  #800080",
-            marginBottom: isMobile ? 20 : 40,
-          }}
-        />
-      </Title>
-      <style>{`
-        @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(40px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-        .skill-card-animate {
-          opacity: 0;
-          animation: fadeUp 0.6s ease forwards;
-        }
-      `}</style>
+      {/* Animated title */}
+      <div
+        ref={titleRef}
+        style={{
+          opacity: titleInView ? 1 : 0,
+          transform: titleInView ? "translateY(0)" : "translateY(40px)",
+          transition: "opacity 0.7s ease, transform 0.7s ease",
+        }}
+      >
+        <Title align="center" order={2} style={{ fontWeight: 700 }}>
+          <Divider
+            size="sm"
+            style={{
+              width: isMobile ? 180 : 400,
+              margin: "0 auto 20px auto",
+              borderTop: "3px solid #800080",
+            }}
+          />
+          CORE SKILLS
+          <Divider
+            size="sm"
+            style={{
+              width: isMobile ? 180 : 400,
+              margin: "20px auto 0 auto",
+              borderTop: "3px solid #800080",
+              marginBottom: isMobile ? 20 : 40,
+            }}
+          />
+        </Title>
+      </div>
 
       <Box
         style={{
@@ -150,6 +152,7 @@ const Skills = () => {
           width: "100%",
         }}
       >
+        {/* Skill cards with staggered scroll animation */}
         <Box
           ref={gridRef}
           style={{
@@ -162,70 +165,91 @@ const Skills = () => {
             width: isMobile ? "100%" : undefined,
           }}
         >
-          {skills?.map((skill, idx) => (
-            <Card
+          {skills.map((skill, idx) => (
+            <div
               key={idx}
-              radius="md"
-              withBorder
-              p="lg"
-              className={inView ? "skill-card-animate" : undefined}
               style={{
-                width: isMobile ? 160 : 260,
-                height: 80,
-                marginTop: isMobile ? 12 : 24,
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                gap: 18,
-                margin: "0 auto",
-                marginBottom: isMobile ? 12 : 24,
-                background: hexToRgba(skill.color, 0.1),
-                opacity: inView ? undefined : 0,
-                animationDelay: inView ? `${idx * 0.1}s` : undefined,
+                opacity: gridInView ? 1 : 0,
+                transform: gridInView
+                  ? "translateY(0) scale(1)"
+                  : "translateY(50px) scale(0.9)",
+                transition: `opacity 0.55s ease ${idx * 0.07}s,
+                             transform 0.55s cubic-bezier(0.34,1.2,0.64,1) ${idx * 0.07}s`,
               }}
             >
-              <ThemeIcon
-                size={isMobile ? 36 : 48}
-                radius="xl"
+              <Card
+                radius="md"
+                withBorder
+                p="lg"
                 style={{
-                  backgroundColor: skill.color,
-                  minWidth: isMobile ? 36 : 48,
-                  minHeight: isMobile ? 36 : 48,
+                  width: isMobile ? 160 : 260,
+                  height: 80,
                   display: "flex",
+                  flexDirection: "row",
                   alignItems: "center",
-                  justifyContent: "center",
+                  gap: 18,
+                  background: "var(--pv-surface)",
+                  borderColor: "var(--pv-border)",
+                  transition: "transform 0.25s ease, box-shadow 0.25s ease",
+                  cursor: "default",
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.transform = "translateY(-6px) scale(1.04)";
+                  e.currentTarget.style.boxShadow = `0 12px 32px ${hexToRgba(skill.color, 0.25)}`;
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.transform = "translateY(0) scale(1)";
+                  e.currentTarget.style.boxShadow = "";
                 }}
               >
-                {React.createElement(skill.icon, {
-                  size: isMobile ? 18 : 24,
-                  color: "#fff",
-                })}
-              </ThemeIcon>
-              <Text fw={700} size={isMobile ? "sm" : "md"} align="left">
-                {skill.name}
-              </Text>
-            </Card>
+                <ThemeIcon
+                  size={isMobile ? 36 : 48}
+                  radius="xl"
+                  style={{
+                    backgroundColor: skill.color,
+                    minWidth: isMobile ? 36 : 48,
+                    minHeight: isMobile ? 36 : 48,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  {React.createElement(skill.icon, {
+                    size: isMobile ? 18 : 24,
+                    color: "#fff",
+                  })}
+                </ThemeIcon>
+                <Text fw={700} size={isMobile ? "sm" : "md"} align="left" style={{ color: "var(--pv-text)" }}>
+                  {skill.name}
+                </Text>
+              </Card>
+            </div>
           ))}
         </Box>
 
+        {/* Image with slide-in animation */}
         <Box
+          ref={imgRef}
           style={{
             width: isMobile ? "100%" : "50%",
             height: "100%",
             display: isMobile ? "none" : "flex",
             justifyContent: "flex-start",
             alignItems: "center",
+            opacity: imgInView ? 1 : 0,
+            transform: imgInView ? "translateX(0)" : "translateX(60px)",
+            transition: "opacity 0.8s ease 0.2s, transform 0.8s cubic-bezier(0.34,1.1,0.64,1) 0.2s",
           }}
         >
           <img
             src={Skill}
             alt="Skills"
             style={{
-              width: isMobile ? "100%" : 680,
+              width: 680,
               height: "100%",
               borderRadius: 24,
-              marginTop: isMobile ? 20 : 80,
-              display: isMobile ? "none" : "block",
+              marginTop: 80,
+              display: "block",
             }}
           />
         </Box>

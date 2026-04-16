@@ -21,7 +21,6 @@ const projects = [
     features: ["Admin Portal", "Web Portal", "Commercial Website"],
     icon: IconHeartbeat,
     color: "#e11d48",
-    bg: "linear-gradient(135deg, #fff1f2, #ffe4e6)",
   },
   {
     name: "Lawyer Project",
@@ -29,7 +28,6 @@ const projects = [
     features: ["Admin Portal", "Web Portal"],
     icon: IconScale,
     color: "#1d4ed8",
-    bg: "linear-gradient(135deg, #eff6ff, #dbeafe)",
   },
   {
     name: "Survey Project",
@@ -37,7 +35,6 @@ const projects = [
     features: ["Survey Portal", "Website", "Admin Portal", "Employee Portal"],
     icon: IconClipboardList,
     color: "#7c3aed",
-    bg: "linear-gradient(135deg, #f5f3ff, #ede9fe)",
   },
   {
     name: "Project Management",
@@ -45,7 +42,6 @@ const projects = [
     features: ["Admin Portal", "Web Portal", "Commercial Website"],
     icon: IconBriefcase,
     color: "#059669",
-    bg: "linear-gradient(135deg, #ecfdf5, #d1fae5)",
   },
   {
     name: "Employee Reward Project",
@@ -53,7 +49,6 @@ const projects = [
     features: ["Admin Portal", "Website"],
     icon: IconAward,
     color: "#d97706",
-    bg: "linear-gradient(135deg, #fffbeb, #fef3c7)",
   },
   {
     name: "Ecard Project",
@@ -61,7 +56,6 @@ const projects = [
     features: ["Web Application"],
     icon: IconCards,
     color: "#0891b2",
-    bg: "linear-gradient(135deg, #ecfeff, #cffafe)",
   },
   {
     name: "Ambulance Service Project",
@@ -69,7 +63,6 @@ const projects = [
     features: ["Admin Portal", "Web Portal"],
     icon: IconAmbulance,
     color: "#dc2626",
-    bg: "linear-gradient(135deg, #fef2f2, #fee2e2)",
   },
   {
     name: "AI Security Application",
@@ -77,7 +70,6 @@ const projects = [
     features: ["Website"],
     icon: IconShieldLock,
     color: "#374151",
-    bg: "linear-gradient(135deg, #f9fafb, #f3f4f6)",
   },
   {
     name: "AI Chatbot",
@@ -85,7 +77,6 @@ const projects = [
     features: ["Website"],
     icon: IconRobot,
     color: "#6d28d9",
-    bg: "linear-gradient(135deg, #faf5ff, #ede9fe)",
   },
 ];
 
@@ -101,9 +92,9 @@ const Project = () => {
     <>
       <style>{`
         .proj-card {
-          background: #fff;
+          background: var(--pv-surface);
           border-radius: 16px;
-          border: 1px solid #ede9f0;
+          border: 1px solid var(--pv-border);
           box-shadow: 0 2px 12px rgba(0,0,0,0.06);
           overflow: hidden;
           transition: transform 0.28s cubic-bezier(0.34,1.2,0.64,1),
@@ -184,7 +175,7 @@ const Project = () => {
           paddingBottom: isMobile ? 32 : 56,
         }}
       >
-        {projects.map((project, idx) => (
+        {projects?.map((project, idx) => (
           <div
             key={idx}
             style={{
@@ -200,37 +191,21 @@ const Project = () => {
               {/* Gradient header */}
               <div
                 style={{
-                  background: project.bg,
+                  background: "var(--pv-bg)",
                   padding: isMobile ? "18px 16px 14px" : "22px 24px 16px",
-                  borderBottom: `1px solid ${project.color}22`,
+                  borderBottom: `1px solid var(--pv-border)`,
                   display: "flex",
-                  alignItems: "flex-start",
+                  alignItems: "center",
                   justifyContent: "space-between",
                   gap: 12,
                 }}
               >
                 <div>
-                  {/* Number badge */}
-                  <div
-                    style={{
-                      display: "inline-block",
-                      background: project.color,
-                      color: "#fff",
-                      fontSize: 11,
-                      fontWeight: 700,
-                      padding: "2px 8px",
-                      borderRadius: 999,
-                      marginBottom: 8,
-                      letterSpacing: "0.05em",
-                    }}
-                  >
-                    #{String(idx + 1).padStart(2, "0")}
-                  </div>
                   <div
                     style={{
                       fontWeight: 800,
                       fontSize: isMobile ? "1rem" : "1.1rem",
-                      color: "#1a1a2e",
+                      color: "var(--pv-text)",
                       lineHeight: 1.3,
                     }}
                   >
@@ -261,7 +236,7 @@ const Project = () => {
                 {/* Description */}
                 <p
                   style={{
-                    color: "#555",
+                    color: "var(--pv-text-muted)",
                     fontSize: isMobile ? "0.85rem" : "0.92rem",
                     lineHeight: 1.65,
                     margin: 0,

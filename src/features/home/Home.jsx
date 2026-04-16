@@ -1,7 +1,50 @@
 import React, { useState, useEffect } from "react";
 import { Logo } from "../../assets";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useMediaQuery } from "@mantine/hooks";
+import { useTheme } from "../../context/ThemeContext";
+
+function ThemeToggle() {
+  const { dark, toggle } = useTheme();
+  return (
+    <button
+      onClick={toggle}
+      aria-label="Toggle dark mode"
+      style={{
+        position: "relative",
+        width: 50,
+        height: 26,
+        borderRadius: 999,
+        background: dark ? "#800080" : "#d1d5db",
+        border: "none",
+        cursor: "pointer",
+        padding: 0,
+        flexShrink: 0,
+        transition: "background 0.3s ease",
+      }}
+    >
+      <span
+        style={{
+          position: "absolute",
+          top: 3,
+          left: dark ? 26 : 3,
+          width: 20,
+          height: 20,
+          borderRadius: "50%",
+          background: "#fff",
+          transition: "left 0.3s ease",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: 12,
+          lineHeight: 1,
+        }}
+      >
+        {dark ? "🌙" : "☀️"}
+      </span>
+    </button>
+  );
+}
 
 const menuItems = [
   { name: "Home", path: "/home" },
@@ -15,7 +58,7 @@ const menuItems = [
 
 const Home = () => {
   const location = useLocation();
-  const navigate = useNavigate();
+  const { dark } = useTheme();
   const isMobile = useMediaQuery("(max-width: 900px)");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -40,7 +83,7 @@ const Home = () => {
         .pv-nav-item {
           font-size: 16px;
           font-weight: 500;
-          color: #555;
+          color: var(--pv-text-muted);
           cursor: pointer;
           white-space: nowrap;
           padding-bottom: 3px;
@@ -109,13 +152,13 @@ const Home = () => {
       >
         <div
           style={{
-            background: "#fff",
+            background: "var(--pv-nav-bg)",
             borderRadius: scrolled || isMobile ? 0 : 14,
             boxShadow: scrolled
-              ? "0 2px 14px rgba(0,0,0,0.09)"
-              : "0 4px 24px rgba(0,0,0,0.10)",
-            borderBottom: scrolled ? "1px solid rgba(0,0,0,0.07)" : "none",
-            transition: "border-radius 0.35s ease, box-shadow 0.35s ease",
+              ? `0 2px 14px var(--pv-shadow)`
+              : `0 4px 24px var(--pv-shadow)`,
+            borderBottom: scrolled ? `1px solid var(--pv-border)` : "none",
+            transition: "border-radius 0.35s ease, box-shadow 0.35s ease, background 0.35s ease",
           }}
         >
         <div
@@ -137,7 +180,6 @@ const Home = () => {
                 height: isMobile ? 38 : 44,
                 width: isMobile ? 38 : 44,
                 animation: "moveX 4s ease-in-out infinite alternate",
-                mixBlendMode: "multiply",
               }}
             />
           </div>
@@ -180,22 +222,11 @@ const Home = () => {
             </nav>
           )}
 
-          {/* RIGHT — Action buttons */}
+
+          {/* Desktop — Theme toggle */}
           {!isMobile && (
-            <div style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0, marginLeft: "auto" }}>
-              <button
-                className="pv-btn-primary"
-                onClick={() => navigate("/contact")}
-              >
-                Hire Me
-              </button>
-              <a
-                href="Priyadarshini V-Resume.pdf"
-                download="Priyadarshini V-Resume.pdf"
-                className="pv-btn-secondary"
-              >
-                Resume ↓
-              </a>
+            <div style={{ marginLeft: "auto", flexShrink: 0 }}>
+              <ThemeToggle />
             </div>
           )}
 
@@ -203,6 +234,8 @@ const Home = () => {
           {isMobile && (
             <>
               <div style={{ flex: 1 }} />
+              <ThemeToggle />
+              <div style={{ width: 12 }} />
               <button
                 onClick={handleBurgerClick}
                 style={{
@@ -242,7 +275,8 @@ const Home = () => {
             left: 0,
             width: "100vw",
             height: "100vh",
-            background: "rgba(255,255,255,0.98)",
+            background: "var(--pv-bg)",
+            opacity: 0.98,
             zIndex: 1099,
             display: "flex",
             flexDirection: "column",
@@ -280,7 +314,7 @@ const Home = () => {
                       style={{
                         fontSize: "1rem",
                         fontWeight: isActive ? 700 : 500,
-                        color: isActive ? "#800080" : "#444",
+                        color: isActive ? "#800080" : "var(--pv-text-muted)",
                         borderBottom: isActive ? "2.5px solid #800080" : "2.5px solid transparent",
                         paddingBottom: 3,
                         textDecoration: "none",
@@ -295,22 +329,6 @@ const Home = () => {
               })}
             </ul>
           </nav>
-          <div style={{ display: "flex", gap: 12, marginTop: 32 }}>
-            <button
-              className="pv-btn-primary"
-              onClick={() => { navigate("/contact"); handleMenuClick(); }}
-            >
-              Hire Me
-            </button>
-            <a
-              href="Priyadarshini V-Resume.pdf"
-              download="Priyadarshini V-Resume.pdf"
-              className="pv-btn-secondary"
-              onClick={handleMenuClick}
-            >
-              Resume ↓
-            </a>
-          </div>
         </div>
       )}
 

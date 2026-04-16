@@ -1,6 +1,7 @@
 import React from "react";
 import { useMediaQuery } from "@mantine/hooks";
 import { useInView } from "../../hooks/useInView";
+import { Divider, Title } from "@mantine/core";
 import {
   IconBriefcase,
   IconCube,
@@ -90,7 +91,7 @@ const Service = () => {
   return (
     <div
       style={{
-        background: "#f8f9fa",
+        background: "var(--pv-bg)",
         paddingTop: isMobile ? 48 : 72,
         paddingBottom: isMobile ? 48 : 80,
         position: "relative",
@@ -104,8 +105,8 @@ const Service = () => {
         }
         .svc2-card {
           position: relative;
-          background: #fff;
-          border: 1px solid #ede9fe;
+          background: var(--pv-surface);
+          border: 1px solid var(--pv-border);
           border-radius: 20px;
           padding: ${isMobile ? "24px 20px" : "30px 26px"};
           cursor: default;
@@ -119,7 +120,7 @@ const Service = () => {
         }
         .svc2-card:hover {
           transform: translateY(-10px);
-          background: #fdfbff;
+          background: var(--pv-surface);
         }
         .svc2-num {
           position: absolute;
@@ -128,7 +129,8 @@ const Service = () => {
           font-size: ${isMobile ? "4.5rem" : "5.5rem"};
           font-weight: 900;
           line-height: 1;
-          color: rgba(0,0,0,0.04);
+          color: var(--pv-text);
+          opacity: 0.05;
           user-select: none;
           pointer-events: none;
           transition: color 0.3s ease;
@@ -152,20 +154,20 @@ const Service = () => {
           transform: scale(1.18) rotate(-8deg);
         }
         .svc2-title {
-          color: #1a1a2e;
+          color: var(--pv-text);
           margin: 0 0 10px;
           font-size: ${isMobile ? "0.98rem" : "1.08rem"};
           font-weight: 700;
           line-height: 1.3;
         }
         .svc2-desc {
-          color: #6c757d;
+          color: var(--pv-text-soft);
           margin: 0;
           font-size: ${isMobile ? "0.8rem" : "0.84rem"};
           line-height: 1.72;
           transition: color 0.3s ease;
         }
-        .svc2-card:hover .svc2-desc { color: #444; }
+        .svc2-card:hover .svc2-desc { color: var(--pv-text); }
       `}</style>
 
       {/* Background blobs */}
@@ -198,61 +200,27 @@ const Service = () => {
             opacity: titleInView ? 1 : 0,
             transform: titleInView ? "translateY(0)" : "translateY(30px)",
             transition: "opacity 0.7s ease, transform 0.7s ease",
-            textAlign: "center",
-            marginBottom: isMobile ? 36 : 56,
           }}
         >
-          <div style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 8,
-            background: "rgba(128,0,128,0.08)",
-            border: "1px solid rgba(128,0,128,0.20)",
-            borderRadius: 999,
-            padding: "6px 18px",
-            marginBottom: 16,
-          }}>
-            <span style={{
-              width: 6, height: 6, borderRadius: "50%",
-              background: "#800080",
-              boxShadow: "0 0 6px rgba(128,0,128,0.5)",
-              display: "inline-block",
-            }} />
-            <span style={{
-              fontSize: "0.75rem", fontWeight: 700,
-              color: "#800080", letterSpacing: 2, textTransform: "uppercase",
-            }}>
-              What I Do
-            </span>
-          </div>
-
-          <h2 style={{
-            margin: "0 0 14px",
-            fontSize: isMobile ? "1.9rem" : "2.8rem",
-            fontWeight: 900,
-            color: "#1a1a2e",
-            letterSpacing: "-0.5px",
-            lineHeight: 1.15,
-          }}>
-            Areas of{" "}
-            <span style={{
-              background: "linear-gradient(135deg, #800080, #c084fc)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}>
-              Focus
-            </span>
-          </h2>
-
-          <p style={{
-            margin: "0 auto",
-            fontSize: isMobile ? "0.9rem" : "1rem",
-            color: "#6c757d",
-            maxWidth: 520,
-            lineHeight: 1.7,
-          }}>
-            Core skills and services I bring to every project — from pixel-perfect UI to scalable architecture.
-          </p>
+          <Title align="center" order={2} style={{ fontWeight: 700, marginTop: isMobile ? 24 : 40, marginBottom: isMobile ? 36 : 56 }}>
+            <Divider
+              size="sm"
+              style={{
+                width: isMobile ? 180 : 400,
+                margin: "0 auto 20px auto",
+                borderTop: "3px solid #800080",
+              }}
+            />
+            AREAS OF FOCUS
+            <Divider
+              size="sm"
+              style={{
+                width: isMobile ? 180 : 400,
+                margin: "20px auto 0 auto",
+                borderTop: "3px solid #800080",
+              }}
+            />
+          </Title>
         </div>
 
         {/* Card grid */}
@@ -279,10 +247,10 @@ const Service = () => {
                   e.currentTarget.style.borderColor = `${service.color}55`;
                   e.currentTarget.style.boxShadow = `0 20px 50px ${service.color}22, 0 0 0 1px ${service.color}33`;
                 }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "#ede9fe";
-                  e.currentTarget.style.boxShadow = "0 2px 12px rgba(0,0,0,0.05)";
-                }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = "var(--pv-border)";
+                    e.currentTarget.style.boxShadow = "0 2px 12px rgba(0,0,0,0.05)";
+                  }}
               >
                 <div className="svc2-top-bar" style={{ background: service.gradient }} />
                 <div className="svc2-num">{String(idx + 1).padStart(2, "0")}</div>

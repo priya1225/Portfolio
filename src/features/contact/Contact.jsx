@@ -11,6 +11,7 @@ import {
   IconMessageCircle,
 } from "@tabler/icons-react";
 import { useMediaQuery } from "@mantine/hooks";
+import { useTheme } from "../../context/ThemeContext";
 
 function useInView(threshold = 0.12) {
   const ref = useRef(null);
@@ -34,6 +35,7 @@ function useInView(threshold = 0.12) {
 }
 
 const Contact = () => {
+  const { dark } = useTheme();
   const isMobile = useMediaQuery("(max-width: 768px)");
   const [titleRef, titleInView] = useInView(0.1);
   const [panelRef, panelInView] = useInView(0.06);
@@ -85,11 +87,11 @@ const Contact = () => {
     width: "100%",
     padding: "11px 14px 11px 42px",
     borderRadius: 10,
-    border: `1.5px solid ${focused[name] ? "#800080" : "#e0d6eb"}`,
+    border: `1.5px solid ${focused[name] ? "#800080" : "var(--pv-border)"}`,
     fontSize: "0.95rem",
     outline: "none",
-    background: focused[name] ? "#fdf5ff" : "#fafafa",
-    color: "#232b3e",
+    background: focused[name] ? "rgba(128,0,128,0.05)" : "var(--pv-bg)",
+    color: "var(--pv-text)",
     boxShadow: focused[name] ? "0 0 0 3px rgba(128,0,128,0.10)" : "none",
     transition: "border 0.22s, box-shadow 0.22s, background 0.22s",
     boxSizing: "border-box",
@@ -158,7 +160,7 @@ const Contact = () => {
           <div
             style={{
               width: isMobile ? "100%" : "38%",
-              background: "linear-gradient(150deg, #2d1b4e 0%, #800080 100%)",
+              background: dark ? "#050608" : "linear-gradient(150deg, #2d1b4e 0%, #800080 100%)",
               padding: isMobile ? "32px 24px" : "52px 40px",
               display: "flex",
               flexDirection: "column",
@@ -329,7 +331,7 @@ const Contact = () => {
           <div
             style={{
               flex: 1,
-              background: "#fff",
+              background: "var(--pv-surface)",
               padding: isMobile ? "32px 20px" : "52px 44px",
               display: "flex",
               flexDirection: "column",
@@ -341,7 +343,7 @@ const Contact = () => {
                 margin: "0 0 6px",
                 fontSize: isMobile ? "1.3rem" : "1.6rem",
                 fontWeight: 800,
-                color: "#1a1a2e",
+                color: "var(--pv-text)",
               }}
             >
               Let's Build Something Great!
@@ -349,7 +351,7 @@ const Contact = () => {
             <p
               style={{
                 margin: "0 0 28px",
-                color: "#888",
+                color: "var(--pv-text-soft)",
                 fontSize: isMobile ? "0.85rem" : "0.92rem",
               }}
             >
@@ -363,7 +365,7 @@ const Contact = () => {
                   style={{
                     display: "block",
                     marginBottom: 6,
-                    color: "#444",
+                    color: "var(--pv-text-muted)",
                     fontWeight: 600,
                     fontSize: "0.88rem",
                   }}
@@ -395,7 +397,7 @@ const Contact = () => {
                   style={{
                     display: "block",
                     marginBottom: 6,
-                    color: "#444",
+                    color: "var(--pv-text-muted)",
                     fontWeight: 600,
                     fontSize: "0.88rem",
                   }}
@@ -428,7 +430,7 @@ const Contact = () => {
                   style={{
                     display: "block",
                     marginBottom: 6,
-                    color: "#444",
+                    color: "var(--pv-text-muted)",
                     fontWeight: 600,
                     fontSize: "0.88rem",
                   }}

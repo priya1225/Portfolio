@@ -128,7 +128,7 @@ function WhyChooseMe({ isMobile }) {
             top: 0,
             bottom: 0,
             width: isMobile ? 48 : 120,
-            background: "linear-gradient(to right, #f8f9fa 10%, transparent 100%)",
+            background: "linear-gradient(to right, var(--pv-bg) 10%, transparent 100%)",
             zIndex: 2,
             pointerEvents: "none",
           }}
@@ -141,7 +141,7 @@ function WhyChooseMe({ isMobile }) {
             top: 0,
             bottom: 0,
             width: isMobile ? 48 : 120,
-            background: "linear-gradient(to left, #f8f9fa 10%, transparent 100%)",
+            background: "linear-gradient(to left, var(--pv-bg) 10%, transparent 100%)",
             zIndex: 2,
             pointerEvents: "none",
           }}
@@ -157,7 +157,7 @@ function WhyChooseMe({ isMobile }) {
                 display: "inline-flex",
                 flexDirection: "column",
                 gap: 12,
-                background: "#fff",
+                background: "var(--pv-surface)",
                 border: `1.5px solid ${item.color}30`,
                 borderRadius: 18,
                 padding: isMobile ? "18px 16px" : "22px 24px",
@@ -204,7 +204,7 @@ function WhyChooseMe({ isMobile }) {
                   margin: 0,
                   fontSize: isMobile ? "0.92rem" : "1rem",
                   fontWeight: 700,
-                  color: "#1a1a2e",
+                  color: "var(--pv-text)",
                   lineHeight: 1.3,
                 }}
               >
@@ -214,8 +214,8 @@ function WhyChooseMe({ isMobile }) {
               <p
                 style={{
                   margin: 0,
-                  fontSize: isMobile ? "0.78rem" : "0.84rem",
-                  color: "#6c757d",
+                  fontSize: isMobile ? "0.92rem" : "0.84rem",
+                  color: "var(--pv-text-soft)",
                   lineHeight: 1.6,
                 }}
               >
@@ -338,7 +338,7 @@ const About = () => {
             gap: isMobile ? "12px" : "18px",
           }}
         >
-          <div style={{ color: "#232b3e", fontSize: isMobile ? "1rem" : "1.2rem" }}>
+          <div style={{ color: "var(--pv-text)", fontSize: isMobile ? "1rem" : "1.2rem" }}>
             Hello! I'm <strong>Priyadarshini V</strong>, a Junior Software Developer from
             <strong> Krishnagiri</strong>, currently working at{" "}
             <strong>Annz Technology, Chennai</strong>. I hold a
@@ -347,13 +347,13 @@ const About = () => {
             <strong>Bachelor of Computer Applications (CGPA: 8.2/10)</strong>{" "}
             from Gonzaga College of Arts & Science for Women.
           </div>
-          <div style={{ color: "#232b3e", fontSize: isMobile ? "1rem" : "1.2rem" }}>
+          <div style={{ color: "var(--pv-text)", fontSize: isMobile ? "1rem" : "1.2rem" }}>
             With <strong>1.8 years of hands-on experience</strong> in web development, I
             specialize in front-end technologies and excel at designing user-friendly,
             functional, and API-integrated solutions. I enjoy tackling complex problems to
             deliver efficient, scalable, and high-quality software.
           </div>
-          <div style={{ color: "#232b3e", fontSize: isMobile ? "1rem" : "1.2rem" }}>
+          <div style={{ color: "var(--pv-text)", fontSize: isMobile ? "1rem" : "1.2rem" }}>
             My professional journey includes internships as a{" "}
             <strong>Mobile Application Developer Intern</strong> at{" "}
             <strong>Primus Global Technologies , Bangalore</strong> (March 2024 – May 2024)
@@ -362,14 +362,14 @@ const About = () => {
             2024). These experiences allowed me to strengthen my skills in real-time project
             development and practical implementation of innovative solutions.
           </div>
-          <div style={{ color: "#232b3e", fontSize: isMobile ? "1rem" : "1.2rem" }}>
+          <div style={{ color: "var(--pv-text)", fontSize: isMobile ? "1rem" : "1.2rem" }}>
             I have actively participated in{" "}
             <strong>multiple national-level conferences and symposiums</strong>, earning
             several certifications, and have successfully completed{" "}
             <strong>numerous real-world projects</strong> that showcase my dedication,
             creativity, and technical expertise.
           </div>
-          <div style={{ color: "#232b3e", fontSize: isMobile ? "1rem" : "1.2rem" }}>
+          <div style={{ color: "var(--pv-text)", fontSize: isMobile ? "1rem" : "1.2rem" }}>
             Passionate about building impactful software, I aim to contribute to{" "}
             <strong>innovative projects</strong> that deliver meaningful and reliable digital
             experiences.
