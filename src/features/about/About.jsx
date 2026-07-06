@@ -348,7 +348,7 @@ const About = () => {
             from Gonzaga College of Arts & Science for Women.
           </div>
           <div style={{ color: "var(--pv-text)", fontSize: isMobile ? "1rem" : "1.2rem" }}>
-            With <strong>1.8 years of hands-on experience</strong> in web development, I
+            With <strong>2 years of hands-on experience</strong> in web development, I
             specialize in front-end technologies and excel at designing user-friendly,
             functional, and API-integrated solutions. I enjoy tackling complex problems to
             deliver efficient, scalable, and high-quality software.

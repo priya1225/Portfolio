@@ -9,6 +9,9 @@ import {
   IconAmbulance,
   IconShieldLock,
   IconRobot,
+  IconCaretDown,
+  IconStack,
+  IconCar,
 } from "@tabler/icons-react";
 import React from "react";
 import { useMediaQuery } from "@mantine/hooks";
@@ -21,6 +24,20 @@ const projects = [
     features: ["Admin Portal", "Web Portal", "Commercial Website"],
     icon: IconHeartbeat,
     color: "#e11d48",
+  },
+  {
+    name: "Pet Care Project",
+    description: "Designed and developed a responsive Pet Care Management System that simplifies pet care services through a modern and intuitive web application.",
+    features: ["Admin Portal", "Website", "Onboarding QR Entry Code"],
+    icon: IconStack,
+    color: "#31d0e8",
+  },
+  {
+    name: "Car Booking Project",
+    description: "Developed a responsive and user-friendly Car Booking System that enables customers to browse available Developed a responsive Car Booking System with vehicle browsing, booking, and user-friendly rental management.",
+    features: ["Admin Portal", "Website"],
+    icon: IconCar,
+    color: "#e714d1",
   },
   {
     name: "Lawyer Project",
@@ -62,7 +79,7 @@ const projects = [
     description: "Comprehensive ambulance service management with real-time tracking, automated dispatching, and interfaces for patients and healthcare providers.",
     features: ["Admin Portal", "Web Portal"],
     icon: IconAmbulance,
-    color: "#dc2626",
+    color: "#D4AF37",
   },
   {
     name: "AI Security Application",

@@ -294,11 +294,8 @@ const HomePage = () => {
             color: "var(--pv-text-soft)", fontSize: isMobile ? "0.98rem" : "1.1rem",
             maxWidth: isMobile ? 320 : 500, marginBottom: 32,
           }}>
-            With 1.8 years of hands-on experience in web development, I
-            specialize in front-end technologies and excel at designing
-            user-friendly, functional, and API-integrated solutions. I enjoy
-            tackling complex problems to deliver efficient, scalable, and
-            high-quality software.
+           With 2 years of professional experience in full-stack web development, I specialize in building modern, responsive, and scalable web applications with a strong focus on front-end engineering. I am passionate about crafting intuitive user experiences, integrating robust APIs, and developing clean, maintainable code that aligns with business objectives. Driven by continuous learning and problem-solving, I strive to deliver high-quality digital solutions that combine performance, usability, and innovation.
+
           </p>
 
           <div className="hero-btns" style={{
@@ -323,7 +320,7 @@ const HomePage = () => {
             </button>
             <a
               className="hero-btn-secondary"
-              href="Priyadarshini V-Resume.pdf"
+              href="Priyadarshini V_Resume.pdf"
               download="Priyadarshini V-Resume.pdf"
               style={{
                 background: "var(--pv-text)", color: "var(--pv-bg)", border: "none",
